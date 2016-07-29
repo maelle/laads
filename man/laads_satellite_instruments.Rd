@@ -2,7 +2,7 @@
 % Please edit documentation in R/listSatelliteInstruments.R
 \name{laads_satellite_instruments}
 \alias{laads_satellite_instruments}
-\title{Available satellites/instruments.}
+\title{Available satellite instruments.}
 \usage{
 laads_satellite_instruments()
 }
@@ -10,7 +10,7 @@ laads_satellite_instruments()
 A data.frame (tibble) with the Name and Description of available satellites/instruments
 }
 \description{
-Available satellites/instruments.
+Available satellite instruments.
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getCollections.R
 \name{laads_collections}
 \alias{laads_collections}
-\title{Available collections.}
+\title{Available collections for a given product.}
 \usage{
 laads_collections(product = "MCD15A2")
 }
@@ -13,7 +13,7 @@ laads_collections(product = "MCD15A2")
 A data.frame (tibble) with the Name and Description of available collections
 }
 \description{
-Available collections.
+Available collections for a given product.
 }
 \examples{
 \dontrun{

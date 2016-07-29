@@ -26,6 +26,13 @@ laads_query_check <- function(query_par){
            paste0(query_par$product, " is not a product name for LAADS. See existing Names in laads_products()"))
     }
   }
+
+  if(!is.null(query_par$instrument)){
+    if(!(query_par$instrument %in% laads_satellite_instruments()$Name)){
+      stop(call. = FALSE,
+           paste0(query_par$instrument, " is not an instrument name for LAADS. See existing Names in laads_satellite_instruments()"))
+    }
+  }
 }
 
 # get

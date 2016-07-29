@@ -1,4 +1,4 @@
-#' Available collections.
+#' Available collections for a given product.
 #'
 #' @param product character, the product short name as given by \code{laads_products()}.
 #'

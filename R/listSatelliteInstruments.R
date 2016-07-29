@@ -1,4 +1,4 @@
-#' Available satellites/instruments.
+#' Available satellite instruments.
 #'
 #' @return A data.frame (tibble) with the Name and Description of available satellites/instruments
 #' @export
