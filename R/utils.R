@@ -29,6 +29,14 @@ laads_parse <- function(req){
   # somehow sometimes with bind_rows I get an error
   # "not compatible with STRSXP"
   text <- do.call(rbind,as_list(text))
-  text <- tibble::as_tibble(apply(text, 2, unlist))
+
+  if(nrow(text) == 1 & ncol(text) == 2){
+    text <- tibble::tibble_(list(Name = lazyeval::interp(~as.character(text[1,1][[1]][[1]])),
+                           Description = lazyeval::interp(~as.character(text[1,2][[1]][[1]]))))
+
+  }else{
+    text <- tibble::as_tibble(apply(text, 2, unlist))
+  }
+
   return(text)
 }
