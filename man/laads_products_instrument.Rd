@@ -19,7 +19,7 @@ Available product groups for a given instrument
 }
 \examples{
 \dontrun{
-laads_products_instrument()
+laads_products_instrument(instrument = "AM1M", group = "LL3L4_A")
 }
 }
 

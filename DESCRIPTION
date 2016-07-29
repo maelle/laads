@@ -1,11 +1,14 @@
 Package: laads
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Access to MODIS Level 1 and Atmosphere data products API https://ladsweb.nascom.nasa.gov/data/api.html
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Authors@R: c(person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = c("aut", "cre")))
+Description: Access to MODIS Level 1 and Atmosphere data products API https://ladsweb.nascom.nasa.gov/data/api.html
 License: What license is it under?
+License: GPL (>= 2)
 LazyData: TRUE
+URL: http://github.com/masalmon/laads
+BugReports: http://github.com/masalmon/laads/issues
 RoxygenNote: 5.0.1
 Suggests: testthat
+Imports: httr, xml2, tibble, dplyr
