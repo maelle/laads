@@ -11,5 +11,5 @@ URL: http://github.com/masalmon/laads
 BugReports: http://github.com/masalmon/laads/issues
 RoxygenNote: 5.0.1
 Suggests: testthat
-Imports: httr, xml2, tibble, dplyr, lubridate
+Imports: httr, xml2, tibble, dplyr, lubridate, lazyeval
 Encoding: UTF-8
