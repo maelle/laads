@@ -2,22 +2,22 @@
 % Please edit documentation in R/listProductGroups.R
 \name{laads_product_groups}
 \alias{laads_product_groups}
-\title{Available products for a given instrument}
+\title{Available product groups for a given instrument}
 \usage{
 laads_product_groups(instrument = "AM1M")
 }
 \arguments{
-\item{instrument}{character, the product short name as given by \code{laads_satellite_instruments()}.}
+\item{instrument}{character, the instrument short name as given by \code{laads_satellite_instruments()}.}
 }
 \value{
-A data.frame (tibble) with the Name and Description of available products
+A data.frame (tibble) with the Name and Description of available product groups
 }
 \description{
-Available products for a given instrument
+Available product groups for a given instrument
 }
 \examples{
 \dontrun{
-laads_collections()
+laads_product_groups()
 }
 }
 

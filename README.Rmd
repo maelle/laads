@@ -1,5 +1,52 @@
 ---
-output: github_document
+title: "Vignette for the ropenaq package"
+author: "Maëlle Salmon"
+date: "`r Sys.Date()`"
+output:
+  md_document:
+    variant: markdown_github
 ---
+laads
+=============
 
 laads is under development and will provide an interface to https://ladsweb.nascom.nasa.gov/data/api.html
+
+```{r}
+library("laads")
+
+```
+
+Its functions mimick the API methods
+
+# Product information
+
+
+## listSatelliteInstruments
+
+```{r}
+laads_satellite_instruments()
+```
+
+## listProducts
+
+```{r}
+laads_products()
+```
+
+## listProductsByInstrument
+
+```{r}
+laads_products_instrument(instrument = "AM1M", group = "LL3L4_A")
+```
+
+## listProductGroups
+
+```{r}
+laads_product_groups(instrument = "AM1M")
+```
+
+## getCollections
+
+```{r}
+laads_collections(product = "MCD15A2")
+```

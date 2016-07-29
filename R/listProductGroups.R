@@ -1,13 +1,13 @@
-#' Available products for a given instrument
+#' Available product groups for a given instrument
 #'
-#' @param instrument character, the product short name as given by \code{laads_satellite_instruments()}.
+#' @param instrument character, the instrument short name as given by \code{laads_satellite_instruments()}.
 #'
-#' @return A data.frame (tibble) with the Name and Description of available products
+#' @return A data.frame (tibble) with the Name and Description of available product groups
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' laads_collections()
+#' laads_product_groups()
 #' }
 laads_product_groups <- function(instrument = "AM1M"){
 
