@@ -12,7 +12,7 @@ laads_data_coverage(collection = "5", product = "MCD15A2")
 \item{product}{character, product name as given by laads_products()}
 }
 \value{
-A data.frame (tibble)
+A data.frame (tibble) with POSIXct start and end of the data collection.
 }
 \description{
 Range of dates covered by the given product in the given collection.

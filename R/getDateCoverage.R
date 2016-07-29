@@ -3,7 +3,7 @@
 #' @param collection character, collection name as given by laads_collections()
 #' @param product character, product name as given by laads_products()
 #'
-#' @return A data.frame (tibble)
+#' @return A data.frame (tibble) with POSIXct start and end of the data collection.
 #'
 #' @details The range does not account for gaps in the data collection.
 #' @export
@@ -18,8 +18,12 @@ laads_data_coverage <- function(collection = "5", product = "MCD15A2"){
                                      product = product))
 
   # check message
-  laads_check(temp)
+  output <- laads_check(temp)
 
   # done!
-  laads_parse(temp)
+  output <- laads_parse(temp)
+  output <- strsplit(output$value, " ")[[1]]
+
+  output <- tibble::tibble_(list(start = lazyeval::interp(~lubridate::ymd_hms(paste0(output[2], output[3]))),
+                                end = lazyeval::interp(~lubridate::ymd_hms(paste0(output[5], output[6])))))
 }
