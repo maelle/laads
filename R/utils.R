@@ -9,7 +9,7 @@ laads_check <- function(req) {
     return(FALSE)
   }
 
-  stop("HTTP failure: ", req$status_code, "\n", content(req)$detail, call. = FALSE)
+  stop("HTTP failure: ", req$status_code, "\n", httr::content(req)$detail, call. = FALSE)
 }
 
 
@@ -18,17 +18,29 @@ laads_url <- function() {
   "http://modwebsrv.modaps.eosdis.nasa.gov/axis2/services/MODAPSservices/"
 }
 
+# check arguments
+laads_query_check <- function(query_par){
+  if(!is.null(query_par$product)){
+    if(!(query_par$product %in% laads_products()$Name)){
+      stop(call. = FALSE,
+           paste0(query_par$product, " is not a product name for LAADS. See existing Names in laads_products()"))
+    }
+  }
+}
+
+# get
 laads_get <- function(name_service, query_par){
   httr::GET(url = paste0(laads_url(), name_service),
             query = query_par)
 }
 
+# parse
 laads_parse <- function(req){
   text <- httr::content(req, as = "text")
   text <- xml2::read_xml(text)
   # somehow sometimes with bind_rows I get an error
   # "not compatible with STRSXP"
-  text <- do.call(rbind,as_list(text))
+  text <- do.call(rbind, xml2::as_list(text))
 
   if(nrow(text) == 1 & ncol(text) == 2){
     text <- tibble::tibble_(list(Name = lazyeval::interp(~as.character(text[1,1][[1]][[1]])),

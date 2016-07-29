@@ -10,6 +10,9 @@
 #' laads_collections()
 #' }
 laads_collections <- function(product = "MCD15A2"){
+
+  laads_query_check(query_par = list(product = product))
+
   temp <- laads_get(name_service = "getCollections",
                     query_par = list(product = product))
 
