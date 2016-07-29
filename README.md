@@ -1,7 +1,7 @@
 laads
 =====
 
-laads is under development and will provide an interface to <https://ladsweb.nascom.nasa.gov/data/api.html>
+laads is under development and will provide an interface to the [NASA API of MODIS Level 1 and Atmosphere data products](https://ladsweb.nascom.nasa.gov/data/api.html).
 
 ``` r
 library("laads")
