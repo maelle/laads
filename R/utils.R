@@ -59,3 +59,27 @@ laads_parse <- function(req){
 
   return(text)
 }
+
+
+# parse
+laads_parse_fileids <- function(req){
+  text <- httr::content(req, as = "text")
+  text <- xml2::read_xml(text)
+  text <- xml2::xml_child(text)
+  # somehow sometimes with bind_rows I get an error
+  # "not compatible with STRSXP"
+  text <- do.call(rbind, xml2::as_list(text))
+  text <- tibble::as_tibble(apply(text, 2, unlist))
+print(text)
+  text <- tibble::tibble_(list(checksum = lazyeval::interp(~text$V1[1]),
+                               file_id = lazyeval::interp(~text$V1[2]),
+                               file_name = lazyeval::interp(~text$V1[3]),
+                               file_size_bytes = lazyeval::interp(~text$V1[4]),
+                               file_type = lazyeval::interp(~text$V1[5]),
+                               ingest_time = lazyeval::interp(~lubridate::ymd_hms(as.character(text$V1[6]))),
+                               online = lazyeval::interp(~text$V1[7]),
+                               start_time = lazyeval::interp(~lubridate::ymd_hms(as.character(text$V1[8])))))
+
+
+  return(text)
+}

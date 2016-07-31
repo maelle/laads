@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' laads_product_groups(product = "MCD15A2",
+#' laads_search_files(product = "MCD15A2",
 #'                      start_time = "2010-01-01",
 #'                     end_time = "2015-05-02",
 #'                     coords_or_tiles = "global",

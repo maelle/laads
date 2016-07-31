@@ -2,6 +2,7 @@
 
 export(laads_collections)
 export(laads_data_coverage)
+export(laads_file_properties)
 export(laads_max_search_results)
 export(laads_product_groups)
 export(laads_products)
