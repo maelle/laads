@@ -7,7 +7,7 @@
 laads_file_properties(file_ids = "299343600")
 }
 \arguments{
-\item{file}{}
+\item{file_ids}{file IDs for the data files, either a single one or a vector of IDs. For getting IDs see \code{laads_search_files}.}
 }
 \value{
 A data.frame (tibble) containing data file properties, including name, id, size, format, ingest time, data start time, and online status.
@@ -22,6 +22,6 @@ files <- laads_search_files(product = "MCD15A2",
                               end_time = "2010-01-10",
                               coords_or_tiles = "global",
                               day_night_both = "DNB")$file_id
-laads_file_properties(file_ids = files)}
+laads_file_properties(file_ids = files[1:10])}
 }
 

@@ -25,5 +25,5 @@ laads_products_instrument <- function(instrument = "AM1M",
 
   # done!
   output <- laads_parse(temp)
-  dplyr::rename(output, Name = V1)
+  dplyr::rename_(output, .dots= list(Name = lazyeval::interp(~V1)))
 }

@@ -19,37 +19,16 @@ library("laads")
 
 ```
 
-Its functions mimick the API methods. The documentation is often a copy of the parameters or API methods documentation. For knowing how to cite the data when using it, please see [this document](http://modaps.nascom.nasa.gov/services/faq/LAADS_Data-Use_Citation_Policies.pdf).
+Its functions mimick the API methods. The documentation is often a copy of the parameters or API methods documentation. 
 
-# Product information
+I will try to give a few workflow examples.
 
+# A bit of information about the API
 
-## listSatelliteInstruments
+## What data is accessible via the LAADS API
 
-```{r}
-laads_satellite_instruments()
-```
+From the [FAQ](http://modaps.nascom.nasa.gov/services/faq/), "LAADS is being populated with large volumes of MODIS data from the NASA EOS Terra and Aqua spacecrafts as they are produced. These data include Collection 5 and some earlier data from Collection 3 & 4 such as Aqua/Terra Atmosphere Level 2 & 3 products. New Collection 6 MODIS Aqua Level 1 and Level 2 Atmosphere products are available while all Terra and rest of Aqua products will be included soon. LAADS also provide access to MODIS Airborne Simulator (MAS) data (via FTP only; not searchable), NPP VIIRS Level 1, Level 2, and Level 3 products, and ENVISAT MERIS Level 1B Full Resolution (FR) and Reduced Resolution (RR) data sets from European Space Agency (ESA).".
 
-## listProducts
+## How to cite the data when using it
 
-```{r}
-laads_products()
-```
-
-## listProductsByInstrument
-
-```{r}
-laads_products_instrument(instrument = "AM1M", group = "LL3L4_A")
-```
-
-## listProductGroups
-
-```{r}
-laads_product_groups(instrument = "AM1M")
-```
-
-## getCollections
-
-```{r}
-laads_collections(product = "MCD15A2")
-```
+For knowing how to cite the data when using it, please see [this document](http://modaps.nascom.nasa.gov/services/faq/LAADS_Data-Use_Citation_Policies.pdf).

@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param file
+#' @param file_ids file IDs for the data files, either a single one or a vector of IDs. For getting IDs see \code{laads_search_files}.
 #'
 #' @return A data.frame (tibble) containing data file properties, including name, id, size, format, ingest time, data start time, and online status.
 #' @export
@@ -11,7 +11,7 @@
 #'                               end_time = "2010-01-10",
 #'                               coords_or_tiles = "global",
 #'                               day_night_both = "DNB")$file_id
-#' laads_file_properties(file_ids = files)}
+#' laads_file_properties(file_ids = files[1:10])}
 laads_file_properties <- function(file_ids = "299343600"){
   temp <- laads_get(name_service = "getFileProperties",
                     query_par = list(fileIds = gsub(" ", "", toString(file_ids))))

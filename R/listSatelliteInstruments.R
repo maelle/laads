@@ -16,5 +16,7 @@ laads_satellite_instruments <- function(){
 
   # done!
   output <- laads_parse(temp)
-  dplyr::rename(output, Name = V1, Description = V2)
+  dplyr::rename_(output, .dots= list(Name = lazyeval::interp(~V1),
+                                     Description = lazyeval::interp(~V2)))
+
 }
