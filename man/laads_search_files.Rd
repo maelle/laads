@@ -10,6 +10,8 @@ laads_search_files(product = "MCD15A2", collection = NULL,
   day_night_both = "DNB")
 }
 \arguments{
+\item{product}{product name(s), e.g. \code{"MCD43C1"} or \code{c("MCD43C1", "MCD43B4")}. See \code{laads_products}.}
+
 \item{collection}{collection number. Default is the default collection for the product. See \code{laads_collection}.}
 
 \item{start_time}{start date (and optional time) of the temporal window, "YYYY-MM-DD" or "YYYY-MM-DD hh:mm:ss".}
@@ -27,8 +29,6 @@ laads_search_files(product = "MCD15A2", collection = NULL,
 \item{coords_or_tiles}{"coords", "tiles" or "global", specifies whether the north/south/west/east parameters are coords or tiles. The north/south/west/east parameters are ignored if global.}
 
 \item{day_night_both}{specifies whether to include data files which only have day data (D), only have night data (N), or only have both day and night data (B). Possible values are these combinations: "D", "N", "B", "DN", "DB", "NB", "DNB". Default is "DNB".}
-
-\item{products}{product name(s), e.g. \code{"MCD43C1"} or \code{c("MCD43C1", "MCD43B4")}. See \code{laads_products}.}
 }
 \value{
 A data.frame (tibble) with only one column, "file_id".

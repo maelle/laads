@@ -1,6 +1,6 @@
 #' Returns a list of file IDs matching the given search criteria.
 #'
-#' @param products product name(s), e.g. \code{"MCD43C1"} or \code{c("MCD43C1", "MCD43B4")}. See \code{laads_products}.
+#' @param product product name(s), e.g. \code{"MCD43C1"} or \code{c("MCD43C1", "MCD43B4")}. See \code{laads_products}.
 #' @param collection collection number. Default is the default collection for the product. See \code{laads_collection}.
 #' @param start_time start date (and optional time) of the temporal window, "YYYY-MM-DD" or "YYYY-MM-DD hh:mm:ss".
 #' @param end_time end date (and optional time) of the temporal window, "YYYY-MM-DD" or "YYYY-MM-DD hh:mm:ss".
