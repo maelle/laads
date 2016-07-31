@@ -12,17 +12,6 @@ library("dplyr")
 
     ## Warning: package 'dplyr' was built under R version 3.2.5
 
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
 The functions of the package mimick the API methods. The documentation is often a copy of the parameters or API methods documentation. Further below a few workflow examples are given in order to help navigating the different functions.
 
 A bit of information about the API
@@ -68,37 +57,37 @@ laads_search_datasets(keywords = "aerosol") %>%
 
 | updated             | author.name | author.email               | title                                                                         | start      | end        | product          |
 |:--------------------|:------------|:---------------------------|:------------------------------------------------------------------------------|:-----------|:-----------|:-----------------|
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                 | 2002-08-28 | 2010-04-14 | MOBAOD\_C00      |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL   | 2000-02-24 | 2010-04-14 | MOBARS\_C00      |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol 5-Min L2 Swath 3km                                        | NA         | NA         | MOD04\_3K        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol 5-Min L2 Swath 10km                                       | 2000-02-24 | 2009-11-28 | MOD04\_L2        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG          | 2000-02-24 | 2009-11-28 | MOD08\_D3        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG          | 2000-02-18 | 2010-03-30 | MOD08\_E3        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG        | 2000-02-01 | 2002-09-01 | MOD08\_M3        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km | 2000-02-24 | 2009-11-28 | MODATML2         |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                  | 2002-07-03 | 2008-12-31 | MYBAOD\_C00      |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL    | 2002-07-03 | 2008-12-31 | MYBARS\_C00      |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land center image 10Km resolution         | NA         | NA         | MYBGAODDB\_C10K  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land east image 10Km resolution           | NA         | NA         | MYBGAODDB\_E10K  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land west image 10Km resolution           | NA         | NA         | MYBGAODDB\_W10K  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol 5-Min L2 Swath 3km                                         | NA         | NA         | MYD04\_3K        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol 5-Min L2 Swath 10km                                        | 2002-07-03 | 2012-05-24 | MYD04\_L2        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG           | 2002-07-03 | 2002-10-08 | MYD08\_D3        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG           | 2002-08-29 | 2002-09-30 | MYD08\_E3        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG         | 2002-09-01 | 2002-09-01 | MYD08\_M3        |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km  | 2002-07-03 | 2008-09-14 | MYDATML2         |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS/NPP Aerosol (aggregated) EDR Ellipsoid Geolocation Data            | NA         | NA         | NP5\_GAERO\_L1   |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Model Information RIP                                      | NA         | NA         | NP5\_VAMIIP\_L2  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Optical Thickness RIP                                      | NA         | NA         | NP5\_VAOTIP\_L2  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Optical Thickness (AOT) EDR                                | NA         | NA         | NP5\_VAOT\_L2    |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Model Information 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAMIIP\_L2  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m               | NA         | NA         | NPP\_VAOTHIP\_L2 |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAOTIP\_L2  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR 6km                    | NA         | NA         | NPP\_VAOT\_L2    |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR Geolocation 750m       | NA         | NA         | NPP\_VGAERO\_L2  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Model Information 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAMIIP\_L2  |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m     | NA         | NA         | NPS\_VAOTHIP\_L2 |
-| 2016-07-31 15:35:00 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Optical Thickness 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAOTIP\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                 | 2002-08-28 | 2010-04-14 | MOBAOD\_C00      |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL   | 2000-02-24 | 2010-04-14 | MOBARS\_C00      |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol 5-Min L2 Swath 3km                                        | NA         | NA         | MOD04\_3K        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol 5-Min L2 Swath 10km                                       | 2000-02-24 | 2009-11-28 | MOD04\_L2        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG          | 2000-02-24 | 2009-11-28 | MOD08\_D3        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG          | 2000-02-18 | 2010-03-30 | MOD08\_E3        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG        | 2000-02-01 | 2002-09-01 | MOD08\_M3        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km | 2000-02-24 | 2009-11-28 | MODATML2         |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                  | 2002-07-03 | 2008-12-31 | MYBAOD\_C00      |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL    | 2002-07-03 | 2008-12-31 | MYBARS\_C00      |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land center image 10Km resolution         | NA         | NA         | MYBGAODDB\_C10K  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land east image 10Km resolution           | NA         | NA         | MYBGAODDB\_E10K  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land west image 10Km resolution           | NA         | NA         | MYBGAODDB\_W10K  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol 5-Min L2 Swath 3km                                         | NA         | NA         | MYD04\_3K        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol 5-Min L2 Swath 10km                                        | 2002-07-03 | 2012-05-24 | MYD04\_L2        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG           | 2002-07-03 | 2002-10-08 | MYD08\_D3        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG           | 2002-08-29 | 2002-09-30 | MYD08\_E3        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG         | 2002-09-01 | 2002-09-01 | MYD08\_M3        |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km  | 2002-07-03 | 2008-09-14 | MYDATML2         |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS/NPP Aerosol (aggregated) EDR Ellipsoid Geolocation Data            | NA         | NA         | NP5\_GAERO\_L1   |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Model Information RIP                                      | NA         | NA         | NP5\_VAMIIP\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Optical Thickness RIP                                      | NA         | NA         | NP5\_VAOTIP\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Optical Thickness (AOT) EDR                                | NA         | NA         | NP5\_VAOT\_L2    |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Model Information 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAMIIP\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m               | NA         | NA         | NPP\_VAOTHIP\_L2 |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAOTIP\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR 6km                    | NA         | NA         | NPP\_VAOT\_L2    |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR Geolocation 750m       | NA         | NA         | NPP\_VGAERO\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Model Information 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAMIIP\_L2  |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m     | NA         | NA         | NPS\_VAOTHIP\_L2 |
+| 2016-07-31 15:37:45 | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Optical Thickness 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAOTIP\_L2  |
 
 Two satellites provides "Aerosol 5-Min L2 Swath 3km". The corresponding products are "MYD04\_3K" (from the Aqua satellite) and "MOD04\_3K" (from the Terra satellite).
 
@@ -137,10 +126,10 @@ head(properties) %>%
 | 2942480380 | 1548244690 | MOD04\_3K.A2015002.0630.006.2015035114313.hdf | 12103325          | MOD04\_3K  | 2015-02-04 11:56:40.961707 | TRUE   | 2015-01-02 06:30:00.0 |
 
 ``` r
-all(properties == TRUE)
+all(properties$online == TRUE)
 ```
 
-    ## [1] FALSE
+    ## [1] TRUE
 
 Now we can get their URL using `laads_file_urls`.
 
