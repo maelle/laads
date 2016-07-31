@@ -19,7 +19,7 @@ library("laads")
 
 ```
 
-Its functions mimick the API methods
+Its functions mimick the API methods. The documentation is often a copy of the parameters or API methods documentation. For knowing how to cite the data when using it, please see [this document](http://modaps.nascom.nasa.gov/services/faq/LAADS_Data-Use_Citation_Policies.pdf).
 
 # Product information
 
