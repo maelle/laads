@@ -16,7 +16,7 @@ laads is under development (and not really usable yet) and will provide an inter
 
 ```{r}
 library("laads")
-
+library("dplyr")
 ```
 
 The functions of the package mimick the API methods. The documentation is often a copy of the parameters or API methods documentation. Further below a few workflow examples are given in order to help navigating the different functions.
@@ -29,12 +29,61 @@ From the [FAQ](http://modaps.nascom.nasa.gov/services/faq/), "LAADS is being pop
 
 If this does not include the data you are looking for, have a look at [the MODISTools package](https://github.com/seantuck12/MODISTools) that supports retrieving and using MODIS data subsets using ORNL DAAC web service (SOAP) for subsetting from Oak Ridge National Laboratory (ORNL).
 
+## How is the data organized
+
+The data is organized by satellite instrument / product / collection / file: each instrument provides different products whose files are organized in different collections. The goal of the package is to help getting the files. 
+
+A type of product, for instance Aerosol Optical Density with a given resolution, can be produced by several satellites.
+
+Some files are available online, other have to be ordered. At some point the ordering function will be available in this package.
+
 ## How to cite the data when using it
 
 For knowing how to cite the data when using it, please see [this document](http://modaps.nascom.nasa.gov/services/faq/LAADS_Data-Use_Citation_Policies.pdf).
 
 # Workflow example
 
-## Getting files for the product MYD04_3K near Hyderabad
+## Getting files for aerosol optical density near Hyderabad
 
-Context: say we want to get the product MYD04_3K for a rectangle 17 N to 18 N latitude, 78 E to 79 E longitude
+Context: say we want to get Aerosol Optical Density data for a rectangle 17 N to 18 N latitude, 78 E to 79 E longitude, with 3km resolution, for one day of January in 2015. 
+
+The first step will be to look for a product that corresponds to this.
+
+```{r}
+laads_search_datasets(keywords = "aerosol") %>%
+  knitr::kable()
+```
+
+Two satellites provides "Aerosol 5-Min L2 Swath 3km". The corresponding products are "MYD04_3K" (from the Aqua satellite) and "MOD04_3K" (from the Terra satellite).
+
+We will now search the corresponding files.
+
+```{r}
+files <- laads_search_files(product = c("MYD04_3K", "MOD04_3K"),
+                   start_time = "2015-01-01",
+                   end_time = "2015-01-02",
+                   coords_or_tiles = "coords",
+                   south = 17, north = 18,
+                   east = 79, west = 78) 
+knitr::kable(files)
+```
+
+As you see, the search function only gives files IDs, nothing else. For getting more information about these files before trying to download them, for instance for knowing if they are available online, we will use another function.
+
+```{r}
+properties <- laads_file_properties(files$file_id) 
+head(properties) %>%
+  knitr::kable()
+all(properties == TRUE)
+```
+
+Now we can get their URL using `laads_file_urls`.
+
+```{r}
+urls <- laads_file_urls(files$file_id) 
+head(urls) %>%
+  knitr::kable()
+
+```
+
+Then one can use them for downloading files via `download.file` and further process them (story to be continued).

@@ -13,22 +13,33 @@
 #' laads_file_urls(file_ids = c("299343600", "299344827"))
 #' }
 laads_file_urls <- function(file_ids = "299343600"){
-  temp <- laads_get(name_service = "getFileUrls",
-                    query_par = list(fileIds = gsub(" ", "", toString(file_ids))))
 
-  # check message
-  laads_check(temp)
+  output <- NULL
 
-  # done!
-  output <- laads_parse(temp)
-  output <- dplyr::bind_cols(tibble::tibble_(list(file_id = lazyeval::interp(~file_ids))),
-                             output)
-  if(nrow(output) == 1){
-    output <- dplyr::rename_(output, .dots= list(file_url = lazyeval::interp(~value)))
+  # not too many IDs at once
+  request <- split(file_ids, ceiling(seq_along(file_ids)/100))
+
+  for(i in 1:length(request)) {
+
+    temp <- laads_get(name_service = "getFileUrls",
+                      query_par = list(fileIds = gsub(" ", "", toString(request[[i]]))))
+
+    # check message
+    laads_check(temp)
+
+    # done!
+    output <- laads_parse(temp)
+    output <- dplyr::bind_cols(tibble::tibble_(list(file_id = lazyeval::interp(~file_ids))),
+                               output)
+    if(nrow(output) == 1){
+      output <- dplyr::rename_(output, .dots= list(file_url = lazyeval::interp(~value)))
+    }
+    else{
+      output <- dplyr::rename_(output, .dots= list(file_url = lazyeval::interp(~V1)))
+    }
   }
-  else{
-    output <- dplyr::rename_(output, .dots= list(file_url = lazyeval::interp(~V1)))
-  }
+
+
 
   return(output)
 }

@@ -33,16 +33,29 @@ laads_search_files <- function(product = "MCD15A2",
                                day_night_both = "DNB"){
 
   #
-  query_par <- list(product = toString(product),
-                    collection = collection,
-                    startTime = start_time,
-                    endTime = end_time,
-                    north = north,
-                    south = south,
-                    east = east,
-                    west = west,
-                    coordsOrTiles = coords_or_tiles,
-                    dayNightBoth = day_night_both)
+  if(length(product) == 1){
+    query_par <- list(product = product,
+                      collection = collection,
+                      startTime = start_time,
+                      endTime = end_time,
+                      north = north,
+                      south = south,
+                      east = east,
+                      west = west,
+                      coordsOrTiles = coords_or_tiles,
+                      dayNightBoth = day_night_both)
+  }else{
+    query_par <- list(products = gsub(" ", "", toString(product)),
+                      collection = collection,
+                      startTime = start_time,
+                      endTime = end_time,
+                      north = north,
+                      south = south,
+                      east = east,
+                      west = west,
+                      coordsOrTiles = coords_or_tiles,
+                      dayNightBoth = day_night_both)
+  }
 
 
   temp <- laads_get(name_service = "searchForFiles",

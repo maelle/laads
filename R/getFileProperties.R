@@ -13,14 +13,28 @@
 #'                               day_night_both = "DNB")$file_id
 #' laads_file_properties(file_ids = files[1:10])}
 laads_file_properties <- function(file_ids = "299343600"){
-  temp <- laads_get(name_service = "getFileProperties",
-                    query_par = list(fileIds = gsub(" ", "", toString(file_ids))))
 
-  # check message
-  laads_check(temp)
+  output <- NULL
 
-  # done!
-  output <- laads_parse_fileids(temp)
+  # not too many IDs at once
+  request <- split(file_ids, ceiling(seq_along(file_ids)/100))
+
+  for(i in 1:length(request)) {
+
+    temp <- laads_get(name_service = "getFileProperties",
+                      query_par = list(fileIds = gsub(" ", "", toString(request[[i]]))))
+
+    # check message
+    laads_check(temp)
+
+    # done!
+    output <- dplyr::bind_rows(output,
+                               laads_parse_fileids(temp))
+  }
+
+
+
+  output <- dplyr::mutate_(output, online = lazyeval::interp(~online == "true"))
   output
 
 }
