@@ -10,6 +10,7 @@ laads
 =============
 
 [![Build Status](https://travis-ci.org/masalmon/laads.svg?branch=master)](https://travis-ci.org/masalmon/laads)
+[![Build status](https://ci.appveyor.com/api/projects/status/34wgko37ruq0xa2s?svg=true)](https://ci.appveyor.com/project/masalmon/laads)
 [![codecov.io](https://codecov.io/github/masalmon/laads/coverage.svg?branch=master)](https://codecov.io/github/masalmon/laads?branch=master)
 
 laads is under development (and not really usable yet) and will provide an interface to the [NASA API of MODIS Level 1 and Atmosphere data products](https://ladsweb.nascom.nasa.gov/data/api.html).

@@ -34,7 +34,6 @@ laads_parse_datasets <- function(req){
   text <- do.call(rbind, text)
   text <- tibble::as_tibble(apply(text, 2, unlist))
   text <- text[6:nrow(text),]
-  print(dim(text))
   text <- dplyr::mutate_(text, updated = lazyeval::interp(~suppressWarnings(lubridate::parse_date_time(updated,
                                                              orders = "abdhmsy", tz = "GMT"))))
   text <- dplyr::mutate_(text, end = lazyeval::interp(~suppressWarnings(lubridate::ymd_hms(end))))
