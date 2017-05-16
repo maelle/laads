@@ -20,4 +20,3 @@ Available collections for a given product.
 laads_collections()
 }
 }
-

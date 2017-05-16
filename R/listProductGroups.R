@@ -10,7 +10,6 @@
 #' laads_product_groups()
 #' }
 laads_product_groups <- function(instrument = "AM1M"){
-
   laads_query_check(query_par = list(instrument = instrument))
 
   temp <- laads_get(name_service = "listProductGroups",
@@ -18,9 +17,6 @@ laads_product_groups <- function(instrument = "AM1M"){
 
   # check message
   laads_check(temp)
-
   # done!
-  output <- laads_parse(temp)
-  dplyr::rename_(output, .dots= list(Name = lazyeval::interp(~V1),
-                                     Description = lazyeval::interp(~ V2)))
+  laads_parse(temp)
 }

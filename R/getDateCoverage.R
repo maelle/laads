@@ -24,6 +24,8 @@ laads_data_coverage <- function(collection = "5", product = "MCD15A2"){
   output <- laads_parse(temp)
   output <- strsplit(output$value, " ")[[1]]
 
-  output <- tibble::tibble_(list(start = lazyeval::interp(~lubridate::ymd_hms(paste0(output[2], output[3]))),
-                                end = lazyeval::interp(~lubridate::ymd_hms(paste0(output[5], output[6])))))
+  output <- data.frame(start = lubridate::ymd_hms(paste0(output[2], output[3])),
+                        end = lubridate::ymd_hms(paste0(output[5], output[6])))
+
+  return(tibble::as_tibble(output))
 }

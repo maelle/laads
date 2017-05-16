@@ -24,4 +24,3 @@ files <- laads_search_files(product = "MCD15A2",
                               day_night_both = "DNB")$file_id
 laads_file_properties(file_ids = files[1:10])}
 }
-

@@ -25,4 +25,3 @@ The keywords are OR'd, and will match product shortname, longname, and name of a
 laads_search_datasets(keywords = c("AOD", "MODIS"))
 }
 }
-

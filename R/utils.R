@@ -21,14 +21,14 @@ laads_url <- function() {
 # check arguments
 laads_query_check <- function(query_par){
   if(!is.null(query_par$product)){
-    if(!(query_par$product %in% laads_products()$Name)){
+    if(!(query_par$product %in% laads_products()$name)){
       stop(call. = FALSE,
            paste0(query_par$product, " is not a product name for LAADS. See existing Names in laads_products()"))
     }
   }
 
   if(!is.null(query_par$instrument)){
-    if(!(query_par$instrument %in% laads_satellite_instruments()$Name)){
+    if(!(query_par$instrument %in% laads_satellite_instruments()$name)){
       stop(call. = FALSE,
            paste0(query_par$instrument, " is not an instrument name for LAADS. See existing Names in laads_satellite_instruments()"))
     }
@@ -50,13 +50,19 @@ laads_parse <- function(req){
 
   text <- do.call(rbind, xml2::as_list(text))
   if(nrow(text) == 1 & ncol(text) == 2){
-    text <- tibble::tibble_(list(Name = lazyeval::interp(~as.character(text[1,1][[1]][[1]])),
-                           Description = lazyeval::interp(~as.character(text[1,2][[1]][[1]]))))
+    text <- data.frame(name = as.character(text[1,1][[1]][[1]]),
+                           value = as.character(text[1,2][[1]][[1]]))
 
   }else{
     text <- tibble::as_tibble(apply(text, 2, unlist))
+
   }
 
+  if("Name" %in% names(text)){
+    text <- dplyr::rename_(text, name = ~Name)
+  }
+
+  text <- tibble::as_tibble(text)
   return(text)
 }
 

@@ -29,8 +29,8 @@ laads_file_urls <- function(file_ids = "299343600"){
 
     # done!
     output <- laads_parse(temp)
-    output <- dplyr::bind_cols(tibble::tibble_(list(file_id = lazyeval::interp(~file_ids))),
-                               output)
+
+    output <- dplyr::mutate_(output, file_id =  ~file_ids)
     if(nrow(output) == 1){
       output <- dplyr::rename_(output, .dots= list(file_url = lazyeval::interp(~value)))
     }
@@ -40,6 +40,7 @@ laads_file_urls <- function(file_ids = "299343600"){
   }
 
 
+  output <- dplyr::select_(output, .dots = list(quote(file_id), quote(file_url)))
 
   return(output)
 }

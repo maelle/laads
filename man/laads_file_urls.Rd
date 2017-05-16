@@ -25,4 +25,3 @@ and the "online" column of \code{laads_order_files()} to know which ones are ava
 laads_file_urls(file_ids = c("299343600", "299344827"))
 }
 }
-

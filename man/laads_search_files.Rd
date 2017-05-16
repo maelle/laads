@@ -45,4 +45,3 @@ laads_search_files(product = "MCD15A2",
                     day_night_both = "DNB")}
 
 }
-

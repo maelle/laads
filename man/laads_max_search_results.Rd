@@ -17,4 +17,3 @@ Maximum number of file IDs that will be returned from a search.
 laads_max_search_results()
 }
 }
-

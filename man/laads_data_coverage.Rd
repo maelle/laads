@@ -25,4 +25,3 @@ The range does not account for gaps in the data collection.
 laads_data_coverage(collection = "5", product = "MCD15A2")
 }
 }
-

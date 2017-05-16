@@ -18,4 +18,3 @@ Available products.
 laads_products()
 }
 }
-

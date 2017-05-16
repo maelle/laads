@@ -20,4 +20,3 @@ Available product groups for a given instrument
 laads_product_groups()
 }
 }
-
