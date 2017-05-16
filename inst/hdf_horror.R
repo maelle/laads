@@ -12,3 +12,13 @@ gdalinfo("inst/test.hdf")
 # [1] 1
 # Warning message:
 #   running command '"C:\Program Files (x86)\FWTools2.4.7\bin\gdalinfo.exe" "inst/test.hdf"' had status 1
+gdal_chooseInstallation(hasDrivers=c("HDF4","HDF5"))
+
+# see https://gis.stackexchange.com/questions/199647/hdf-files-in-gdal-throwing-an-error-in-r-gdalinfo
+# found via https://gis.stackexchange.com/questions/213923/open-hdf4-files-using-gdal-on-windows
+
+gdal_setInstallation(getOption("gdalUtils_gdalPath")[[
+  gdal_chooseInstallation(hasDrivers=c("HDF4","HDF5"))]]$path)
+
+gdalinfo("inst/test.hdf")
+# same error
