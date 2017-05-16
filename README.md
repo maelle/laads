@@ -1,14 +1,16 @@
 laads
 =====
 
-[![Build Status](https://travis-ci.org/masalmon/laads.svg?branch=master)](https://travis-ci.org/masalmon/laads) [![Build status](https://ci.appveyor.com/api/projects/status/34wgko37ruq0xa2s?svg=true)](https://ci.appveyor.com/project/masalmon/laads) [![codecov.io](https://codecov.io/github/masalmon/laads/coverage.svg?branch=master)](https://codecov.io/github/masalmon/laads?branch=master)
+[![Build Status](https://travis-ci.org/maelle/laads.svg?branch=master)](https://travis-ci.org/maelle/laads) [![Build status](https://ci.appveyor.com/api/projects/status/34wgko37ruq0xa2s?svg=true)](https://ci.appveyor.com/project/masalmon/laads) [![codecov.io](https://codecov.io/github/maelle/laads/coverage.svg?branch=master)](https://codecov.io/github/maelle/laads?branch=master)
 
-laads is under development (and not really usable yet) and will provide an interface to the [NASA API of MODIS Level 1 and Atmosphere data products](https://ladsweb.nascom.nasa.gov/data/api.html).
+laads is under development (and not really usable yet) and will provide an interface to the [NASA API of MODIS Level 1 and Atmosphere data products](https://ladsweb.modaps.eosdis.nasa.gov/tools-and-services/lws-classic/api.php).
 
 ``` r
 library("laads")
 library("dplyr")
 ```
+
+    ## Warning: package 'dplyr' was built under R version 3.3.3
 
 The functions of the package mimick the API methods. The documentation is often a copy of the parameters or API methods documentation. Further below a few workflow examples are given in order to help navigating the different functions.
 
@@ -51,39 +53,38 @@ laads_search_datasets(keywords = "aerosol") %>%
   knitr::kable()
 ```
 
-| updated | author.name | author.email               | title                                                                         | start      | end        | product          |
-|:--------|:------------|:---------------------------|:------------------------------------------------------------------------------|:-----------|:-----------|:-----------------|
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                 | 2002-08-28 | 2010-04-14 | MOBAOD\_C00      |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL   | 2000-02-24 | 2010-04-14 | MOBARS\_C00      |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol 5-Min L2 Swath 3km                                        | NA         | NA         | MOD04\_3K        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol 5-Min L2 Swath 10km                                       | 2000-02-24 | 2009-11-28 | MOD04\_L2        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG          | 2000-02-24 | 2009-11-28 | MOD08\_D3        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG          | 2000-02-18 | 2010-03-30 | MOD08\_E3        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG        | 2000-02-01 | 2002-09-01 | MOD08\_M3        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Terra Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km | 2000-02-24 | 2009-11-28 | MODATML2         |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                  | 2002-07-03 | 2008-12-31 | MYBAOD\_C00      |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL    | 2002-07-03 | 2008-12-31 | MYBARS\_C00      |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land center image 10Km resolution         | NA         | NA         | MYBGAODDB\_C10K  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land east image 10Km resolution           | NA         | NA         | MYBGAODDB\_E10K  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | Deep Blue Aerosol Optical Depth 550 Land west image 10Km resolution           | NA         | NA         | MYBGAODDB\_W10K  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol 5-Min L2 Swath 3km                                         | NA         | NA         | MYD04\_3K        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol 5-Min L2 Swath 10km                                        | 2002-07-03 | 2012-05-24 | MYD04\_L2        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG           | 2002-07-03 | 2002-10-08 | MYD08\_D3        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG           | 2002-08-29 | 2002-09-30 | MYD08\_E3        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG         | 2002-09-01 | 2002-09-01 | MYD08\_M3        |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | MODIS/Aqua Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km  | 2002-07-03 | 2008-09-14 | MYDATML2         |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS/NPP Aerosol (aggregated) EDR Ellipsoid Geolocation Data            | NA         | NA         | NP5\_GAERO\_L1   |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Model Information RIP                                      | NA         | NA         | NP5\_VAMIIP\_L2  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Optical Thickness RIP                                      | NA         | NA         | NP5\_VAOTIP\_L2  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | HDF5 VIIRS Aerosol Optical Thickness (AOT) EDR                                | NA         | NA         | NP5\_VAOT\_L2    |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Model Information 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAMIIP\_L2  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m               | NA         | NA         | NPP\_VAOTHIP\_L2 |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAOTIP\_L2  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR 6km                    | NA         | NA         | NPP\_VAOT\_L2    |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR Geolocation 750m       | NA         | NA         | NPP\_VGAERO\_L2  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Model Information 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAMIIP\_L2  |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m     | NA         | NA         | NPS\_VAOTHIP\_L2 |
-| NA      | MODAPS      | <modapsuso@sigmaspace.com> | VIIRS/NPP Subset of Aerosol Optical Thickness 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAOTIP\_L2  |
+| updated | author.name | author.email       | title                                                                         | start      | end        | product          |
+|:--------|:------------|:-------------------|:------------------------------------------------------------------------------|:-----------|:-----------|:-----------------|
+| NA      | MODAPS      | modapsuso.nasa.gov | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                 | 2002-08-28 | 2010-04-14 | MOBAOD\_C00      |
+| NA      | MODAPS      | modapsuso.nasa.gov | Terra Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL   | 2000-02-24 | 2010-04-14 | MOBARS\_C00      |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol 5-Min L2 Swath 3km                                        | NA         | NA         | MOD04\_3K        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol 5-Min L2 Swath 10km                                       | 2000-02-24 | 2009-11-28 | MOD04\_L2        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG          | 2000-02-24 | 2009-11-28 | MOD08\_D3        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG          | 2000-02-18 | 2010-03-30 | MOD08\_E3        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG        | 2000-02-01 | 2002-09-01 | MOD08\_M3        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol Optical Thickness Daily L3 Global 0.05Deg CMA             | 2000-02-24 | 2017-03-30 | MOD09CMA         |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Terra Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km | 2000-02-24 | 2009-11-28 | MODATML2         |
+| NA      | MODAPS      | modapsuso.nasa.gov | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH                  | 2002-07-03 | 2008-12-31 | MYBAOD\_C00      |
+| NA      | MODAPS      | modapsuso.nasa.gov | Aqua Global Composite Level 2 browse AEROSOL\_OPTICAL\_DEPTH\_RATIO\_SMALL    | 2002-07-03 | 2008-12-31 | MYBARS\_C00      |
+| NA      | MODAPS      | modapsuso.nasa.gov | Deep Blue Aerosol Optical Depth 550 Land center image 10Km resolution         | NA         | NA         | MYBGAODDB\_C10K  |
+| NA      | MODAPS      | modapsuso.nasa.gov | Deep Blue Aerosol Optical Depth 550 Land east image 10Km resolution           | NA         | NA         | MYBGAODDB\_E10K  |
+| NA      | MODAPS      | modapsuso.nasa.gov | Deep Blue Aerosol Optical Depth 550 Land west image 10Km resolution           | NA         | NA         | MYBGAODDB\_W10K  |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol 5-Min L2 Swath 3km                                         | NA         | NA         | MYD04\_3K        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol 5-Min L2 Swath 10km                                        | 2002-07-03 | 2012-05-24 | MYD04\_L2        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Daily L3 Global 1Deg CMG           | 2002-07-03 | 2005-07-12 | MYD08\_D3        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol Cloud Water Vapor Ozone 8-Day L3 Global 1Deg CMG           | 2002-08-29 | 2002-09-30 | MYD08\_E3        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG         | 2002-09-01 | 2002-09-01 | MYD08\_M3        |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol Optical Thickness Daily L3 Global 0.05Deg CMA              | 2002-07-04 | 2017-03-30 | MYD09CMA         |
+| NA      | MODAPS      | modapsuso.nasa.gov | MODIS/Aqua Aerosol, Cloud and Water Vapor Subset 5-Min L2 Swath 5km and 10km  | 2002-07-03 | 2008-09-14 | MYDATML2         |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Aerosol Model Information 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAMIIP\_L2  |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m               | NA         | NA         | NPP\_VAOTHIP\_L2 |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath IP 750m                    | NA         | NA         | NPP\_VAOTIP\_L2  |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR 6km                    | NA         | NA         | NPP\_VAOT\_L2    |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Aerosol Optical Thickness 5-Min L2 Swath EDR Geolocation 750m       | NA         | NA         | NPP\_VGAERO\_L2  |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Subset of Aerosol Model Information 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAMIIP\_L2  |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Subset of Aerosol Optical Thickness Heap 5-Min L2 Swath IP 750m     | NA         | NA         | NPS\_VAOTHIP\_L2 |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Subset of Aerosol Optical Thickness 5-Min L2 Swath IP 750m          | NA         | NA         | NPS\_VAOTIP\_L2  |
+| NA      | MODAPS      | modapsuso.nasa.gov | VIIRS/NPP Aerosol Optical Thickness EDR 6-Min L2 Swath 6km                    | NA         | NA         | VNP04E\_L2       |
 
 Two satellites provides "Aerosol 5-Min L2 Swath 3km". The corresponding products are "MYD04\_3K" (from the Aqua satellite) and "MOD04\_3K" (from the Terra satellite).
 
@@ -112,14 +113,14 @@ head(properties) %>%
   knitr::kable()
 ```
 
-| checksum   | file\_id   | file\_name                                    | file\_size\_bytes | file\_type | ingest\_time               | online | start\_time           |
-|:-----------|:-----------|:----------------------------------------------|:------------------|:-----------|:---------------------------|:-------|:----------------------|
-| 1367971449 | 1521335279 | MYD04\_3K.A2015001.0720.006.2015005143400.hdf | 4301152           | MYD04\_3K  | 2015-01-05 14:42:11.202523 | TRUE   | 2015-01-01 07:20:00.0 |
-| 2858661553 | 1521335916 | MYD04\_3K.A2015001.0855.006.2015005144104.hdf | 19874389          | MYD04\_3K  | 2015-01-05 14:44:07.204686 | TRUE   | 2015-01-01 08:55:00.0 |
-| 1384416930 | 1521376559 | MYD04\_3K.A2015002.0800.006.2015005161654.hdf | 11040458          | MYD04\_3K  | 2015-01-05 16:21:29.894935 | TRUE   | 2015-01-02 08:00:00.0 |
-| 2096251102 | 1546415765 | MOD04\_3K.A2015001.0550.006.2015033060522.hdf | 18108481          | MOD04\_3K  | 2015-02-02 06:11:11.874779 | TRUE   | 2015-01-01 05:50:00.0 |
-| 1867147408 | 1548238829 | MOD04\_3K.A2015002.0455.006.2015035114041.hdf | 14572836          | MOD04\_3K  | 2015-02-04 11:44:41.189185 | TRUE   | 2015-01-02 04:55:00.0 |
-| 2942480380 | 1548244690 | MOD04\_3K.A2015002.0630.006.2015035114313.hdf | 12103325          | MOD04\_3K  | 2015-02-04 11:56:40.961707 | TRUE   | 2015-01-02 06:30:00.0 |
+| checksum   | file\_id   | file\_name                                    | file\_size\_bytes | file\_type | ingest\_time        | online | start\_time           |
+|:-----------|:-----------|:----------------------------------------------|:------------------|:-----------|:--------------------|:-------|:----------------------|
+| 1367971449 | 1521335279 | MYD04\_3K.A2015001.0720.006.2015005143400.hdf | 4301152           | MYD04\_3K  | 2015-01-05 14:42:11 | TRUE   | 2015-01-01 07:20:00.0 |
+| 2858661553 | 1521335916 | MYD04\_3K.A2015001.0855.006.2015005144104.hdf | 19874389          | MYD04\_3K  | 2015-01-05 14:44:07 | TRUE   | 2015-01-01 08:55:00.0 |
+| 1384416930 | 1521376559 | MYD04\_3K.A2015002.0800.006.2015005161654.hdf | 11040458          | MYD04\_3K  | 2015-01-05 16:21:29 | TRUE   | 2015-01-02 08:00:00.0 |
+| 2096251102 | 1546415765 | MOD04\_3K.A2015001.0550.006.2015033060522.hdf | 18108481          | MOD04\_3K  | 2015-02-02 06:11:11 | TRUE   | 2015-01-01 05:50:00.0 |
+| 1867147408 | 1548238829 | MOD04\_3K.A2015002.0455.006.2015035114041.hdf | 14572836          | MOD04\_3K  | 2015-02-04 11:44:41 | TRUE   | 2015-01-02 04:55:00.0 |
+| 2942480380 | 1548244690 | MOD04\_3K.A2015002.0630.006.2015035114313.hdf | 12103325          | MOD04\_3K  | 2015-02-04 11:56:40 | TRUE   | 2015-01-02 06:30:00.0 |
 
 ``` r
 all(properties$online == TRUE)
@@ -135,13 +136,23 @@ head(urls) %>%
   knitr::kable()
 ```
 
-| file\_id   | file\_url                                                                                                |
-|:-----------|:---------------------------------------------------------------------------------------------------------|
-| 1521335279 | <ftp://ladsweb.nascom.nasa.gov/allData/6/MYD04_3K/2015/001/MYD04_3K.A2015001.0720.006.2015005143400.hdf> |
-| 1521335916 | <ftp://ladsweb.nascom.nasa.gov/allData/6/MYD04_3K/2015/001/MYD04_3K.A2015001.0855.006.2015005144104.hdf> |
-| 1521376559 | <ftp://ladsweb.nascom.nasa.gov/allData/6/MYD04_3K/2015/002/MYD04_3K.A2015002.0800.006.2015005161654.hdf> |
-| 1546415765 | <ftp://ladsweb.nascom.nasa.gov/allData/6/MOD04_3K/2015/001/MOD04_3K.A2015001.0550.006.2015033060522.hdf> |
-| 1548238829 | <ftp://ladsweb.nascom.nasa.gov/allData/6/MOD04_3K/2015/002/MOD04_3K.A2015002.0455.006.2015035114041.hdf> |
-| 1548244690 | <ftp://ladsweb.nascom.nasa.gov/allData/6/MOD04_3K/2015/002/MOD04_3K.A2015002.0630.006.2015035114313.hdf> |
+| file\_id   | file\_url                                                                                                       |
+|:-----------|:----------------------------------------------------------------------------------------------------------------|
+| 1521335279 | <ftp://ladsweb.modaps.eosdis.nasa.gov/allData/6/MYD04_3K/2015/001/MYD04_3K.A2015001.0720.006.2015005143400.hdf> |
+| 1521335916 | <ftp://ladsweb.modaps.eosdis.nasa.gov/allData/6/MYD04_3K/2015/001/MYD04_3K.A2015001.0855.006.2015005144104.hdf> |
+| 1521376559 | <ftp://ladsweb.modaps.eosdis.nasa.gov/allData/6/MYD04_3K/2015/002/MYD04_3K.A2015002.0800.006.2015005161654.hdf> |
+| 1546415765 | <ftp://ladsweb.modaps.eosdis.nasa.gov/allData/6/MOD04_3K/2015/001/MOD04_3K.A2015001.0550.006.2015033060522.hdf> |
+| 1548238829 | <ftp://ladsweb.modaps.eosdis.nasa.gov/allData/6/MOD04_3K/2015/002/MOD04_3K.A2015002.0455.006.2015035114041.hdf> |
+| 1548244690 | <ftp://ladsweb.modaps.eosdis.nasa.gov/allData/6/MOD04_3K/2015/002/MOD04_3K.A2015002.0630.006.2015035114313.hdf> |
 
 Then one can use them for downloading files via `download.file` and further process them (story to be continued).
+
+``` r
+library(gdalUtils)
+file_to_download <- urls$file_url[1]
+download.file(file_to_download, destfile = "test.hdf")
+gdalinfo("test.hdf")
+sds <- get_subdatasets("MOD17A3H.A2000001.h21v09.006.2015141183401.hdf")
+sds
+file.remove(file_to_download)
+```
