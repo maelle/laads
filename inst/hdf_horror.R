@@ -2,7 +2,7 @@ library("laads")
 library("rgdal")
 library("gdalUtils")
 download.file(laads_file_urls(file_ids = "299343600")$file_url,
-              destfile = "inst/test.hdf")
+              destfile = "inst/test.hdf", mode='wb')
 
 gdalinfo("inst/test.hdf")
 # [1] "ERROR 4: `inst/test.hdf' not recognised as a supported file format."
